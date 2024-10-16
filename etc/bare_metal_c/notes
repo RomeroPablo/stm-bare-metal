@@ -2,3 +2,42 @@ links
 
 https://interrupt.memfault.com/blog/zero-to-main-1
 
+'axioms' -
+entry point: main
+init static vars
+implement: HardFault_Handler & SysTick_Handler
+
+given a 'blinky' bin (product family agnostic in this case), what now?
+Supose Cortex-M0+
+
+In the ARMv6-M Technical Reference Manual - 
+(underlying arch for Cortex-M0+)
+We find the following:
+// note that this is a pseudo code representation of the actions the hardware takes after a reset
+
+TakeReset()
+  VTOR = Zeros(32); // set vector table offset register to zero (32 bits)
+  for i = 0 to 12
+    R[i] = bits(32) unknown // registers not initialized
+  bits(32) vectortable = VTOR; // set vector table to addr in offset register
+  CurrentMode = Mode_Thread; // Thread Mode, (normal unprivileged user mode)
+  LR = bits(32) UNKNOWN; // link register and application program status register unknown
+  APSR = bites(32) UNKNOWN; // must be initialized by the software
+  IPSR<5:0> = Zeros(6); // clear interrupt program status reg. no exceptions active
+  PRIMASK.PM = '0'; // allows all interrupts (higher -> more restricted)
+  CONTROL.SPSEL = '0'; // use main stack
+  CONTROL.nPRIV = '0'; // set processor to privileged mode
+  ResetSCRegs(); // reset system control registers to defaults
+  for i = 0 to 511
+    ExceptionActive[i] = '0'; // ensure all exceptions are inactive
+  ClearEventRegister(); // not waiting for any events atm
+  SP_main = MemA[vectortable,4] AND 0xFFFFFFFC<31:0>; // load Main Stack Pointer from VT
+  SP_process = ((bits(30)) UNKNOWN): '00'); // load Process Stack Pointer unknown
+  start = MemA[vectortable+4, 4]; // grab reset handler address from VT
+  BLXWritePC(start); // start execution at that address
+
+In essence, set up the processor's initial state, clear any active interrupts or exceptions, and start executing the reset handler
+the reset handler starts the main program
+
+This is done in hardware
+
