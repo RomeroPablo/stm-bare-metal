@@ -1,0 +1,37 @@
+Docs: 
+Reference Manual - application level help
+Programming Manual - system level software help
+
+Goals: 
+Microcontroller fundamentals
+Open-Source stack (gcc, libopencm3)
+Bare metal (no RTOS)
+key peripherals
+Bootloader, firmware updates over USB (serial)
+Signed firmware (encryption)
+
+minimal ASM
+No 'Kernel' level scheduling
+timers, coms, accelerators
+not too much bootloader info (interrupt memfault good resource) https://interrupt.memfault.com/blog/how-to-write-a-bootloader-from-scratch
+IOT is the wild west
+
+NOT goals: 
+production ready - rather Educational MVP
+Bug free - some mistakes (is there enough information to solve them?)
+optimal utilisation 
+comprehensive embedded C overview
+best file struct / arch / code organisation / mmodularity / design patterns / etc
+
+Note on the naming scheme: 
+
+STM32 - Family
+F - Performance Type
+4 - Core (Cortex M4 in this case (generally))
+01 - Line
+R - Pin Count
+E - Flash Size
+T - Package
+6 - Temp Range
+
+
