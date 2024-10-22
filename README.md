@@ -1,0 +1,1 @@
+Notes on bare metal programming for an STM32F0 MCU
