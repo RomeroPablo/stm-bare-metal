@@ -1,4 +1,4 @@
-Notes on bare metal programming for an STM32F0 MCU
+STM32 F0 Bare Metal
 
                                                                                  -+++*+*++=                                                                        
                                                                               .+********+++++=                                                                     
