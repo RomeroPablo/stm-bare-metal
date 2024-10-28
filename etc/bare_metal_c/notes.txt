@@ -1,5 +1,3 @@
-links
-
 https://interrupt.memfault.com/blog/zero-to-main-1
 
 'axioms' -
