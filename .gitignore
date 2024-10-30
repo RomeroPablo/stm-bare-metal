@@ -1,0 +1,4 @@
+.obsidian/
+./etc/hal_blink/build
+./etc/hal_blink/compile_commands.json
+./etc/hal_blink/.cache/
