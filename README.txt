@@ -1,4 +1,4 @@
-STM32 F0 Bare Metal
+STM32 F4 Bare Metal
 
                                                                                  -+++*+*++=                                                                        
                                                                               .+********+++++=                                                                     
@@ -30,3 +30,21 @@ STM32 F0 Bare Metal
    .+++++                                                                                                                                                          
   ++=+                                                                                                                                                             
  ++                                                                                                                                                                
+
+ requires packages:
+    
+    make
+    arm-none-eabi-gcc
+    st-flash
+
+ build:
+
+    make
+
+flash:
+
+    make flash
+
+clean :
+
+    make clean
