@@ -45,6 +45,6 @@ flash:
 
     make flash
 
-clean :
+clean:
 
     make clean
